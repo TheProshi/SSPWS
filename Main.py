@@ -1,5 +1,8 @@
+#! /usr/bin/python
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
+accept_ip = '127.0.0.1'
+accept_port = 8080
 
 class Serv(BaseHTTPRequestHandler):
 
@@ -16,5 +19,5 @@ class Serv(BaseHTTPRequestHandler):
         self.wfile.write(bytes(file_to_open, 'utf-8'))
 
 
-httpd = HTTPServer(('localhost', 8080), Serv)
+httpd = HTTPServer((accept_ip, accept_port), Serv)
 httpd.serve_forever()
